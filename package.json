@@ -1,0 +1,20 @@
+{
+  "name": "js30",
+  "version": "0.0.1",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pontusk/JavaScript30.git"
+  },
+  "author": "Pontus Karlsson",
+  "bugs": {
+    "url": "https://github.com/pontusk/JavaScript30/issues"
+  },
+  "homepage": "https://github.com/pontusk/JavaScript30#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0"
+  }
+}
