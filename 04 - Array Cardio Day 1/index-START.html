@@ -32,16 +32,75 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
 
+    var fifteen = inventors.filter(function(inventor) {
+      if(inventor.year >= 1500 && inventor.year < 1600) {
+        return true; 
+      }
+    });
+    console.table(fifteen); 
+
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+
+    var names = inventors.map(function(inventor) {
+      return `${inventor.first} ${inventor.last}`;
+    });
+    console.log(names);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
 
+    var ordered = inventors.sort(function(a, b) {
+      if(a.year > b.year) {
+        return 1;
+      }
+      else {
+        return -1;
+      }
+    });
+    console.table(ordered);
+
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
 
+    var lived = inventors.map(function(inventor) {
+      return (inventor.passed - inventor.year);
+    });
+    var sum = lived.reduce(function(a, b) {
+      return a + b;
+    }, 0);
+    console.log(sum);
+
+    var sum = inventors.reduce(function(total, inventor) {
+      return total + (inventor.passed - inventor.year);
+    }, 0); //the last 0 is setting 'this' to 0.
+
+    console.log(sum);
+
+
     // 5. Sort the inventors by years lived
+
+    var oldest = inventors.sort(function(a, b) {
+      if((a.passed - a.year) > (b.passed - b.year)) {
+        return 1;
+      }
+      else {
+        return -1;
+      }
+    });
+    console.table(oldest);
+
+    var oldest = inventors.sort(function(a, b) {
+      var x = a.passed - a.year;
+      var y = b.passed - b.year;
+      if(x > y) {
+        return 1;
+      } 
+      else {
+        return -1;
+      } 
+    });
+    console.table(oldest);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
