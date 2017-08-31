@@ -34,7 +34,7 @@
 
     var fifteen = inventors.filter(function(inventor) {
       if(inventor.year >= 1500 && inventor.year < 1600) {
-        return true; 
+        return true; //keep
       }
     });
     console.table(fifteen); 
@@ -105,14 +105,45 @@
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    var boulevards = Array.from(document.querySelectorAll('.mw-category a'));
+    var de = boulevards
+      .map(function(boulevard) {
+        return boulevard.outerText;
+      })
+      .filter(function(streetName) {
+        return streetName.includes('de');  
+      });
+
+    de;
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+    var alpha = people.sort(function(a, b) {
+      var [aLast, bFirst] = b.split(', ');
+      var [bLast, bFirst] = a.split(', ');
+      if(aLast > bLast) {
+        return -1;
+      }
+      else {
+        return 1;
+      }
+    });
+
+    console.log(alpha);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    var transportation = data.reduce(function(obj, item) {
+      if (!obj[item]) {
+        obj[item] = 0;  
+      }
+      obj[item]++;
+      return obj;
+    }, {});
+    console.log(transportation);
   </script>
 </body>
 </html>
