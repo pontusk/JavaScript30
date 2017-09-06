@@ -55,7 +55,18 @@
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
+    const index = comments.findIndex((comment) => comment.id === 823423);
+    console.log(index);
+
     // delete the comment with the ID of 823423
+    const newComments = [
+      ...comments.splice(0, index), //show all comments before 823423
+      ...comments.splice(index + 1) //show all comments after 823423
+    ];
+
+    console.table(newComments);
+
+
 
   </script>
 </body>
