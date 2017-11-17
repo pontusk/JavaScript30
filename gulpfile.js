@@ -1,34 +1,23 @@
-var gulp = require('gulp'),
-    connect = require('gulp-connect');
+const gulp = require('gulp');
+const connect = require('gulp-connect');
 
-var cssSources = [
-    '**/*.css'
-];
+const cssSources = ['**/*.css'];
+const htmlSources = ['**/*.html'];
 
-var htmlSources = [
-    '**/*.html'
-];
+gulp.task('css', () => gulp.src(cssSources).pipe(connect.reload()));
 
-gulp.task('css', function () {
-    gulp.src(cssSources)
-    .pipe(connect.reload())
+gulp.task('html', () => gulp.src(htmlSources).pipe(connect.reload()));
+
+gulp.task('watch', () => {
+  gulp.watch(cssSources, ['css']);
+  gulp.watch(htmlSources, ['html']);
 });
 
-gulp.task('html', function () {
-    gulp.src(htmlSources)
-    .pipe(connect.reload())
-});
-
-gulp.task('watch', function () {
-    gulp.watch(cssSources, ['css']);
-    gulp.watch(htmlSources, ['html']);
-});
-
-gulp.task('connect', function () {
-    connect.server({
-        root: '',
-        livereload: true
-    });
+gulp.task('connect', () => {
+  connect.server({
+    root: '',
+    livereload: true
+  });
 });
 
 gulp.task('default', ['css', 'html', 'watch', 'connect']);
